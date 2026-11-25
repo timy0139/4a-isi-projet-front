@@ -1,0 +1,103 @@
+:root {
+    --bleu-fonce: #003a70;
+    --bleu: #0072bc;
+    --bleu-clair: #e8f1f8;
+    --gris: #f5f6f8;
+    --texte: #1d2733;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: rgb(220, 226, 231);
+    color: var(--texte);
+    padding-bottom: 5rem; /* place pour le bouton Commander */
+}
+
+/* Bandeau du haut*/
+#bandeau {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: rgb(19, 80, 120);
+    border-bottom: 4px solid rgb(30, 136, 206);
+}
+
+/* Boutons */
+button {
+    background: rgb(19, 80, 120) ;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #005a96;
+}
+
+#bandeau button {
+    background: transparent;
+    border: 1px solid white;
+}
+
+#bandeau button:hover {
+    background: white;
+    color: var(--bleu-fonce);
+}
+
+/* Blocs menus et produits */
+#divMenus,
+#divProduits {
+    max-width: 800px;
+    margin: 1.5rem auto;
+    padding: 1rem 1.5rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 5px solid var(--bleu);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+#divMenus h2,
+#divProduits h2 {
+    margin-top: 0;
+    color:  rgb(19, 80, 120);
+}
+
+/* Listes (marche avec <ul> ou <li> directement) */
+#listeMenus,
+#listeProduits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#listeMenus li,
+#listeProduits li {
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.4rem;
+    background: rgb(30, 136, 206);
+    border-radius: 6px;
+}
+
+/* Bouton Commander fixé en bas */
+#btnCommande {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 2rem;
+    padding: 0.9rem 1.8rem;
+    font-weight: bold;
+    background: var(--bleu-fonce);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#btnCommande:hover {
+    background: var(--bleu);
+}
