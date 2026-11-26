@@ -8,7 +8,8 @@ btnRetour.addEventListener("click", function() {
 formulaire.addEventListener("submit", function(event) {
     event.preventDefault(); // empêche le rechargement de la page
 
-    const email = document.getElementById("email").value;
+    const name = document.getElementById("username").value;
+    const password = document.getElementById("mdp").value;
 
     // Pas de back : on simule la connexion en mémorisant l'email
     localStorage.setItem("utilisateurConnecte", email);

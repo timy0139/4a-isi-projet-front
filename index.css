@@ -1,0 +1,40 @@
+body {
+    font-family: sans-serif;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1rem;
+    color: #222;
+}
+
+#bandeau {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #0072bc;
+}
+
+button {
+    background: #0072bc;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#listeMenus,
+#listeProduits {
+    list-style: none;
+    padding: 0;
+}
+
+#listeMenus li,
+#listeProduits li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+#btnCommande {
+    margin-top: 1rem;
+}
