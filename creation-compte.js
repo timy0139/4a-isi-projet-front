@@ -10,6 +10,9 @@ const btn_creation = document.getElementById("creation_button")     //boutton po
 
 const username_input = document.getElementById("username")
 
+const formulaire = document.getElementById("formulaire")
+
+
 /**
  * SIMULATION DU BACK : à remplacer plus tard par un appel réel, par exemple :
  *   const reponse = await fetch("/api/comptes", { method: "POST", ... });
@@ -34,23 +37,24 @@ btnRetour.addEventListener("click", function() {
     window.location.href = "index.html";
 });
 
-btn_creation.addEventListener("click", creation_compte())
+btn_creation.addEventListener("click", create_account)
 
-async function creation_button(){
+async function create_account(){
     const username = username_input.value
 
-    if (exists()){
+    if (await exists() == true){
         alert("Nom d'utilisateur déjà utilisé")
-        username = ""   //vide la zone de texte
+        username_input.value = ""   //vide la zone de texte
         return
     }
 
     const mdp = await creation_compte()
 
         // On affiche le mot de passe reçu et on masque le formulaire
-    spanMotDePasse.textContent = motDePasse;
-    formulaire.hidden = true;
-    divResultat.hidden = false;
+    spanMotDePasse.textContent = mdp
+    formulaire.hidden = true
+    divResultat.hidden = false
+
 
 }
 
@@ -69,7 +73,7 @@ async function creation_compte() {
     
     //creation du compte via back + génération du mdp
 
-    return mdp
+    return "valeuramodifier"
 
 
 }
