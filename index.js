@@ -8,7 +8,6 @@ async function init() {
     afficherSelonConnexion(currentUser !== null);
 }
 
-<<<<<<< HEAD
 async function estConnecte() {
     /*try {
         const reponse = await fetch("/me", { credentials: "include" });
@@ -17,24 +16,6 @@ async function estConnecte() {
         return false; // serveur injoignable : on considère l'utilisateur déconnecté
     }*/
    return false
-=======
-
-async function fetchCurrentUser() {
-    const token = localStorage.getItem("token");
-    if (!token) return null;
-    try {
-        const reponse = await fetch(`${API_URL}/auth/current`, {
-            headers: { "authorisation": `bearer ${token}` },
-        });
-        if (!reponse.ok) {
-            localStorage.removeItem("token");
-            return null;
-        }
-        return await reponse.json();
-    } catch {
-        return null;
-    }
->>>>>>> 439fe50ec8811900861448c2fc2974e784161d02
 }
 
 
