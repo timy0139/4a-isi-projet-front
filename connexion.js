@@ -1,3 +1,5 @@
+const API_URL = "http://127.0.0.1:8000";
+
 const btnRetour = document.getElementById("btnRetour");
 const formulaire = document.getElementById("formConnexion");
 
@@ -5,12 +7,23 @@ btnRetour.addEventListener("click", function() {
     window.location.href = "index.html";
 });
 
-formulaire.addEventListener("submit", function(event) {
+formulaire.addEventListener("submit", async function(event) {
     event.preventDefault(); // empêche le rechargement de la page
 
-    const name = document.getElementById("username").value;
+    const username = document.getElementById("username").value;
     const password = document.getElementById("mdp").value;
 
+    const reponse = await fetch(`${API_URL}/auth/login`, {
+        method: "POST",
+        headers: { "content-type": "application/json"},
+        body: JSON.stringify({username, password}),
+        });
+
+    const data = await reponse.json();
+    if (!reponse.ok){
+        document.getElementById("erreurConnexion").innerHTML = data.detail
+        return;
+    }
     // Pas de back : on simule la connexion en mémorisant l'email
     localStorage.setItem("utilisateurConnecte", email);
     window.location.href = "index.html";
