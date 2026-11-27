@@ -16,6 +16,8 @@ const username_input = document.getElementById("username")
  *   return (await reponse.json()).motDePasse;
  * Le back créera le compte et renverra le mot de passe généré.
  */
+
+/*
 async function demanderCreationCompte(email) {
     const caracteres = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
     const tirages = crypto.getRandomValues(new Uint32Array(12));
@@ -25,6 +27,8 @@ async function demanderCreationCompte(email) {
     }
     return motDePasse;
 }
+*/
+
 
 btnRetour.addEventListener("click", function() {
     window.location.href = "index.html";
@@ -32,15 +36,22 @@ btnRetour.addEventListener("click", function() {
 
 btn_creation.addEventListener("click", creation_compte())
 
-function creation_button(){
+async function creation_button(){
     const username = username_input.value
 
     if (exists()){
         alert("Nom d'utilisateur déjà utilisé")
+        username = ""   //vide la zone de texte
         return
     }
 
-    
+    const mdp = await creation_compte()
+
+        // On affiche le mot de passe reçu et on masque le formulaire
+    spanMotDePasse.textContent = motDePasse;
+    formulaire.hidden = true;
+    divResultat.hidden = false;
+
 }
 
 
@@ -54,21 +65,15 @@ async function exists(){
     return false
 }
 
+async function creation_compte() {
+    
+    //creation du compte via back + génération du mdp
+
+    return mdp
 
 
+}
 
-
-formulaire.addEventListener("submit", async function(event) {
-    event.preventDefault();
-
-    const email = document.getElementById("email").value;
-    const motDePasse = await demanderCreationCompte(email);
-
-    // On affiche le mot de passe reçu et on masque le formulaire
-    spanMotDePasse.textContent = motDePasse;
-    formulaire.hidden = true;
-    divResultat.hidden = false;
-});
 
 btnVersConnexion.addEventListener("click", function() {
     window.location.href = "connexion.html";
