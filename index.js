@@ -14,7 +14,7 @@ async function estConnecte() {
     } catch (e) {
         return false; // serveur injoignable : on considère l'utilisateur déconnecté
     }*/
-   return true
+   return false
 }
 
 

@@ -1,8 +1,14 @@
 const btnRetour = document.getElementById("btnRetour");
-const formulaire = document.getElementById("formCreation");
-const divResultat = document.getElementById("divResultat");
-const spanMotDePasse = document.getElementById("motDePasse");
-const btnVersConnexion = document.getElementById("btnVersConnexion");
+
+const divResultat = document.getElementById("divResultat"); //a afficher quand le compte est créer
+
+const spanMotDePasse = document.getElementById("motDePasse");   //mot de passe temporaire
+
+const btnVersConnexion = document.getElementById("btnVersConnexion");   //boutton pour se connecter apres création du compte
+
+const btn_creation = document.getElementById("creation_button")     //boutton pour créer le compte
+
+const username_input = document.getElementById("username")
 
 /**
  * SIMULATION DU BACK : à remplacer plus tard par un appel réel, par exemple :
@@ -23,6 +29,34 @@ async function demanderCreationCompte(email) {
 btnRetour.addEventListener("click", function() {
     window.location.href = "index.html";
 });
+
+btn_creation.addEventListener("click", creation_compte())
+
+function creation_button(){
+    const username = username_input.value
+
+    if (exists()){
+        alert("Nom d'utilisateur déjà utilisé")
+        return
+    }
+
+    
+}
+
+
+
+async function exists(){
+
+
+    //vérifie si le nom d'utilisateur n'est pas deja utilisé
+
+
+    return false
+}
+
+
+
+
 
 formulaire.addEventListener("submit", async function(event) {
     event.preventDefault();
