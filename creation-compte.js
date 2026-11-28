@@ -1,8 +1,17 @@
 const btnRetour = document.getElementById("btnRetour");
-const formulaire = document.getElementById("formCreation");
-const divResultat = document.getElementById("divResultat");
-const spanMotDePasse = document.getElementById("motDePasse");
-const btnVersConnexion = document.getElementById("btnVersConnexion");
+
+const divResultat = document.getElementById("divResultat"); //a afficher quand le compte est créer
+
+const spanMotDePasse = document.getElementById("motDePasse");   //mot de passe temporaire
+
+const btnVersConnexion = document.getElementById("btnVersConnexion");   //boutton pour se connecter apres création du compte
+
+const btn_creation = document.getElementById("creation_button")     //boutton pour créer le compte
+
+const username_input = document.getElementById("username")
+
+const formulaire = document.getElementById("formulaire")
+
 
 /**
  * SIMULATION DU BACK : à remplacer plus tard par un appel réel, par exemple :
@@ -10,6 +19,8 @@ const btnVersConnexion = document.getElementById("btnVersConnexion");
  *   return (await reponse.json()).motDePasse;
  * Le back créera le compte et renverra le mot de passe généré.
  */
+
+/*
 async function demanderCreationCompte(email) {
     const caracteres = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
     const tirages = crypto.getRandomValues(new Uint32Array(12));
@@ -19,22 +30,54 @@ async function demanderCreationCompte(email) {
     }
     return motDePasse;
 }
+*/
+
 
 btnRetour.addEventListener("click", function() {
     window.location.href = "index.html";
 });
 
-formulaire.addEventListener("submit", async function(event) {
-    event.preventDefault();
+btn_creation.addEventListener("click", create_account)
 
-    const email = document.getElementById("email").value;
-    const motDePasse = await demanderCreationCompte(email);
+async function create_account(){
+    const username = username_input.value
 
-    // On affiche le mot de passe reçu et on masque le formulaire
-    spanMotDePasse.textContent = motDePasse;
-    formulaire.hidden = true;
-    divResultat.hidden = false;
-});
+    if (await exists() == true){
+        alert("Nom d'utilisateur déjà utilisé")
+        username_input.value = ""   //vide la zone de texte
+        return
+    }
+
+    const mdp = await creation_compte()
+
+        // On affiche le mot de passe reçu et on masque le formulaire
+    spanMotDePasse.textContent = mdp
+    formulaire.hidden = true
+    divResultat.hidden = false
+
+
+}
+
+
+
+async function exists(){
+
+
+    //vérifie si le nom d'utilisateur n'est pas deja utilisé
+
+
+    return false
+}
+
+async function creation_compte() {
+    
+    //creation du compte via back + génération du mdp
+
+    return "valeuramodifier"
+
+
+}
+
 
 btnVersConnexion.addEventListener("click", function() {
     window.location.href = "connexion.html";
